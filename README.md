@@ -447,7 +447,7 @@ Note: 테스트 용이성을 위해서 ContextConfiguration 은 별도의 파일
 다음의 크롬 웹스토어에서 `Postman` 을 찾아 설치한다.  
 https://chrome.google.com/webstore/category/apps?utm_source=chrome-ntp-icon
 
-![](images/postman.png)
+![](wiki/images/postman.png)
 
 
 크롬앱에서 Postman을 실행하고 다음과 같이 테스트를 수행한다.  
@@ -460,12 +460,12 @@ https://chrome.google.com/webstore/category/apps?utm_source=chrome-ntp-icon
 ```
 
 
-![](images/postman_test.png)
+![](wiki/images/postman_test.png)
 
 
 * `Send` 버튼을 누르면 요청이 전송되고 다음과 같이 응답(`Status 200 OK`)이 돌아오면 정상 처리된 것이다.
 
-![](images/postman_test_ok.png)
+![](wiki/images/postman_test_ok.png)
 
 
 * 다음 URL을 호출하여 정상 응답을 확인한다. 
@@ -483,14 +483,14 @@ https://chrome.google.com/webstore/category/apps?utm_source=chrome-ntp-icon
 
 ### 1.5.1 The request processing workflow in Spring Web MVC (high level)
 
-![](images/spring_mvc.png)
+![](wiki/images/spring_mvc.png)
 사진출처: http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html
 
 ### 1.5.2 Sample Web Application
 > 웹 어플리케이션은 MVC 패턴을 기반으로 다음과 같이 구현한다.
 
 #### MVC Architecture
-![](images/mvc.png)
+![](wiki/images/mvc.png)
 
 #### Controller
 
@@ -671,15 +671,15 @@ public class TeamVo {
 ### 1.5.4 Tomcat Deploy & Test
 
 * `Apache > Tomcat v8.5 Server` 를 선택하고 `Next` 를 클릭한다.  
-![](images/tomcat_install1.png)
+![](wiki/images/tomcat_install1.png)
 
 
 * `Tomcat installation directory` 를 선택하고 `Next` 를 클릭한다.  
-![](images/tomcat_install2.png)
+![](wiki/images/tomcat_install2.png)
 
 
 * `user` 어플리케이션을 Add하고 `Finish` 를 클릭한다.  
-![](images/tomcat_install3.png)
+![](wiki/images/tomcat_install3.png)
 
 
 * 테스트  
