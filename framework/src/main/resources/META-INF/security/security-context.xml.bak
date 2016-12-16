@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/security"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http pattern="/service/**" entry-point-ref="restAuthenticationEntryPoint" use-expressions="true"
+        auto-config="false" create-session="stateless">
+        <intercept-url pattern="/service/token" access="permitAll" />
+        <custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER" />
+        <intercept-url pattern="/service/**" access="isAuthenticated()" />
+
+        <logout />
+    </http>
+
+    <beans:bean class="kyun.iot.framework.security.CustomTokenAuthenticationFilter" id="authenticationTokenProcessingFilter">
+        <beans:constructor-arg type="java.lang.String">
+            <beans:value>/service/**</beans:value>
+        </beans:constructor-arg>
+    </beans:bean>
+</beans:beans>

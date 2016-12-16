@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kyun.iot.sample.team.dao.TeamDao">
+
+    <select id="getTeam" resultType="kyun.iot.sample.team.vo.TeamVo">
+        <![CDATA[
+        SELECT * 
+        FROM TEAM 
+        WHERE ID = #{id}  
+        ]]>
+    </select>
+
+    <select id="getTeams" resultType="kyun.iot.sample.team.vo.TeamVo">
+        <![CDATA[
+        SELECT * 
+        FROM TEAM  
+        ]]>
+    </select>
+
+    <insert id="addTeam" parameterType="kyun.iot.sample.team.vo.TeamVo">
+        <![CDATA[ 
+        INSERT INTO TEAM (
+            ID
+            , TEAM_NAME
+            , RATING
+        )
+        VALUES (
+            NULL 
+            , #{teamName}
+            , #{rating}
+        )]]>
+    </insert>
+
+    <update id="updateTeam" parameterType="kyun.iot.sample.team.vo.TeamVo">
+        <![CDATA[ 
+        UPDATE TEAM
+        SET 
+              TEAM_NAME = #{teamName}
+            , RATING = #{rating}
+        WHERE ID = #{id}
+        ]]>
+    </update>
+
+    <delete id="deleteTeam">
+        <![CDATA[
+        DELETE 
+        FROM TEAM
+        WHERE ID = #{id}
+        ]]>
+    </delete>
+
+</mapper>	

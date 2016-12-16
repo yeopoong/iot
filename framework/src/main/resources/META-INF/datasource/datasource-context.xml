@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+      <value>classpath:META-INF/datasource/datasource.properties</value>
+    </property>
+  </bean>
+
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="${iot.jdbc.driverClass}" />
+    <property name="url" value="${iot.jdbc.url}" />
+    <property name="username" value="${iot.jdbc.username}" />
+    <property name="password" value="${iot.jdbc.password}" />
+  </bean>
+
+</beans>

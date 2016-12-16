@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:security="http://www.springframework.org/schema/security"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/security
+                        http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <security:http auto-config="false" create-session="always" use-expressions="true" entry-point-ref="restAuthenticationEntryPoint">
+        <security:intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS" />
+        <security:intercept-url pattern="/login" access="permitAll"/>
+        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
+
+        <security:access-denied-handler error-page="/error403" />
+        <security:custom-filter ref="authenticationFilter" position="FORM_LOGIN_FILTER" />
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="customAuthenticationProvider" />
+    </security:authentication-manager>
+    
+    <bean id="restAuthenticationEntryPoint" class="org.springframework.security.web.authentication.RestAuthenticationEntryPoint">
+        <property name="loginFormUrl" value="/login" />
+    </bean>
+    
+    <bean id="authenticationFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager" />
+        <property name="filterProcessesUrl" value="/j_spring_security_check" />
+        <property name="authenticationFailureHandler" ref="securityLoginFailureHandler" />
+        <property name="authenticationSuccessHandler" ref="securityLoginSuccessHandler" />
+    </bean>
+    
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    
+    <bean id="securityLoginSuccessHandler" class="kyun.iot.framework.rest.RestLoginSuccessHandler" />
+    <bean id="securityLoginFailureHandler" class="kyun.iot.framework.rest.RestLoginFailureHandler" />
+</beans>

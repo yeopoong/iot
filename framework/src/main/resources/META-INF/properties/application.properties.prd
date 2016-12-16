@@ -1,0 +1,1 @@
+iot.jdbc.driverClass=org.hsqldb.jdbc.JDBCDriver

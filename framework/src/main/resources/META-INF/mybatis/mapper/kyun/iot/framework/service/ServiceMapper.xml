@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kyun.iot.framework.service.ServiceMapper">
+
+    <select id="getServices" resultType="kyun.iot.framework.service.Service">
+        <![CDATA[
+        SELECT * 
+        FROM TB_SVC_MST 
+        ]]>
+    </select>
+
+    <select id="getService" resultType="kyun.iot.framework.service.Service">
+        <![CDATA[
+        SELECT * 
+        FROM TB_SVC_MST 
+        WHERE SVC_ID = #{serviceId}
+        ]]>
+    </select>
+
+</mapper>	
